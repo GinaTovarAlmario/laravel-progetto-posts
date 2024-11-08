@@ -23,18 +23,19 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::middleware('auth')->prefix('/admin')->name('admin.')->group(function () {
 // index
-Route::get('/posts',[AdminPostController::class,'index'])->name('admin.posts.index');
+Route::get('/posts',[AdminPostController::class,'index'])->name('posts.index');
 // store
-Route::post('/posts',[AdminPostController::class,'store'])->name('admin.posts.store');
+Route::post('/posts',[AdminPostController::class,'store'])->name('posts.store');
 // create
-Route::get('/posts/create',[AdminPostController::class,'create'])->name('admin.posts.create');
+Route::get('/posts/create',[AdminPostController::class,'create'])->name('posts.create');
 // delete
-Route::get('/posts/{id}',[AdminPostController::class,'destroy'])->name('admin.posts.delete');
+Route::get('/posts/{id}',[AdminPostController::class,'destroy'])->name('posts.delete');
 // update
-Route::put('/posts/{id}',[AdminPostController::class,'update'])->name('admin.posts.update');
+Route::put('/posts/{id}',[AdminPostController::class,'update'])->name('posts.update');
 // show
-Route::get('/posts/{id}',[AdminPostController::class,'show'])->name('admin.posts.show');
+Route::get('/posts/{id}',[AdminPostController::class,'show'])->name('posts.show');
 // edit
-Route::get('/posts/{id}/edit',[AdminPostController::class,'edit'])->name('admin.posts.edit');
-
+Route::get('/posts/{id}/edit',[AdminPostController::class,'edit'])->name('posts.edit');
+});

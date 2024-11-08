@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\PostController as AdminPostController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +22,19 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// index
+Route::get('/posts',[AdminPostController::class,'index'])->name('admin.posts.index');
+// store
+Route::post('/posts',[AdminPostController::class,'store'])->name('admin.posts.store');
+// create
+Route::get('/posts/create',[AdminPostController::class,'create'])->name('admin.posts.create');
+// delete
+Route::get('/posts/{id}',[AdminPostController::class,'destroy'])->name('admin.posts.delete');
+// update
+Route::put('/posts/{id}',[AdminPostController::class,'update'])->name('admin.posts.update');
+// show
+Route::get('/posts/{id}',[AdminPostController::class,'show'])->name('admin.posts.show');
+// edit
+Route::get('/posts/{id}/edit',[AdminPostController::class,'edit'])->name('admin.posts.edit');
+

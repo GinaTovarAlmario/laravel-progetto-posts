@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class StorePostrequest extends FormRequest
 {
@@ -11,6 +12,9 @@ class StorePostrequest extends FormRequest
      */
     public function authorize(): bool
     {
+        if(Auth::check()){
+            return true;
+        }
         return false;
     }
 
@@ -22,7 +26,10 @@ class StorePostrequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title'=>['required','string','min:2','max:255'],
+            'author'=>['required','string','min:2','max:50'],
+            'content'=>['required','string','min:15'],
+
         ];
     }
 }

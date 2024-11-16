@@ -31,7 +31,7 @@ Route::post('/posts',[AdminPostController::class,'store'])->name('posts.store');
 // create
 Route::get('/posts/create',[AdminPostController::class,'create'])->name('posts.create');
 // delete
-Route::get('/posts/{id}',[AdminPostController::class,'destroy'])->name('posts.delete');
+Route::delete('/posts/{id}',[AdminPostController::class,'destroy'])->name('posts.delete');
 // update
 Route::put('/posts/{id}',[AdminPostController::class,'update'])->name('posts.update');
 // show

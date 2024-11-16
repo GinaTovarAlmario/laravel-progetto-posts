@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StorePostrequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    public function construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      */
@@ -29,11 +33,11 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePostrequest $request)
     {
         $data = request()->validated();
         $post = Post::create($data);
-        redirect()->route('admin.posts.index');
+        redirect()->route('admin.posts.show', $post);
     }
 
     /**
@@ -41,7 +45,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        redirect()->route('admin.posts.show',compact('post'));
+        return view('admin.posts.show',compact("post"));
 
     }
 

@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-12">
                 <h1 class="text-center fw-bold">
-                    Post list:
+                    Latest Posts:
                 </h1>
             </div>
             <div class="col-12">
@@ -24,7 +24,9 @@
                                     {{$post->id}}
                                 </th>
                                 <td>
-                                    {{$post->title}}
+                                    <a href="{{route('guest.posts.show',$post)}}">
+                                        {{$post->title}}
+                                    </a>
                                 </td>
                                 <td>
                                     {{$post->author}}

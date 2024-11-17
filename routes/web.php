@@ -1,20 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\PostController as AdminPostController;
+use App\Http\Controllers\Guest\PostController as GuestPostController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -22,6 +11,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/posts',[GuestPostController::class,'index'])->name('guest.posts.index');
+Route::get('/posts/{post}',[GuestPostController::class,'show'])->name('guest.posts.show');
 
 Route::middleware('auth')->prefix('/admin')->name('admin.')->group(function () {
 // index

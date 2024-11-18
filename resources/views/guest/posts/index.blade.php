@@ -9,36 +9,19 @@
                 </h1>
             </div>
             <div class="col-12">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Title</th>
-                            <th scope="col">Author</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse ($posts as $post)
-                            <tr>
-                                <th>
-                                    {{$post->id}}
-                                </th>
-                                <td>
-                                    <a href="{{route('guest.posts.show',$post)}}">
-                                        {{$post->title}}
-                                    </a>
-                                </td>
-                                <td>
-                                    {{$post->author}}
-                                </td>
-                            </tr>
-                        @empty
-                            <tr>
-                                No post available
-                            </tr>
-                        @endforelse
-                    </tbody>
-                </table>
+                <div class="row">
+                    @forelse ($posts as $index => $post)
+                        <div class="col-3 me-2 mb-3">
+                            {{$post->id}}
+                            {{$post->title}}
+                            {{$post->author}}
+                            {{$post->content}}
+                        </div>
+                    @empty
+                        <div>
+                            No posts available
+                        </div>
+                    @endforelse
                 <div>
                     {{$posts->links()}}
                 </div>

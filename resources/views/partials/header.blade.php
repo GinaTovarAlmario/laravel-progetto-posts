@@ -21,6 +21,9 @@
                                 <a class="nav-link" href="{{ route('admin.posts.create') }}">{{ __('Add new post') }}</a>
                             </li>
                         @endif
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('guest.posts.index') }}">{{ __('Posts') }}</a>
+                        </li>
                     @endauth
                 </ul>
 

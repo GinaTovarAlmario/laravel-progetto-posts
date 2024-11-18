@@ -23,11 +23,11 @@ Route::post('/posts',[AdminPostController::class,'store'])->name('posts.store');
 // create
 Route::get('/posts/create',[AdminPostController::class,'create'])->name('posts.create');
 // delete
-Route::delete('/posts/{id}',[AdminPostController::class,'destroy'])->name('posts.delete');
+Route::delete('/posts/{post}',[AdminPostController::class,'destroy'])->name('posts.delete');
 // update
-Route::put('/posts/{id}',[AdminPostController::class,'update'])->name('posts.update');
+Route::put('/posts/{post}',[AdminPostController::class,'update'])->name('posts.update');
 // show
-Route::get('/posts/{id}',[AdminPostController::class,'show'])->name('posts.show');
+Route::get('/posts/{post}',[AdminPostController::class,'show'])->name('posts.show');
 // edit
-Route::get('/posts/{id}/edit',[AdminPostController::class,'edit'])->name('posts.edit');
+Route::get('/posts/{post}/edit',[AdminPostController::class,'edit'])->name('posts.edit');
 });
